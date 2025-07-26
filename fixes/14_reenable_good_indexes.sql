@@ -5,7 +5,11 @@
             ALTER INDEX IX_SalesOrderDetail_ProductID DISABLE;
 ----------------------------------------------------------------*/
 -- Database context set by PowerShell
--- USE AdventureWorks2022;
+-- For SSMS, uncomment the following:
+/*
+USE AdventureWorks2022;
+GO
+*/
 BEGIN TRY
     BEGIN TRAN;
 
