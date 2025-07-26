@@ -1,0 +1,51 @@
+sql-server-performance-tuning-and-optimization/
+│
+├── .gitignore                  # bin/obj, .bak, .plan files, *.pbix, etc.
+├── LICENSE                     # MIT or Apache‑2.0
+├── README.md                   # Executive overview & quick‑start
+├── Performance_Playbook.md     # Deep‑dive stats, methodology, lessons learned
+│
+├── backup/                     # Raw DB backups & schema exports
+│   └── AdventureWorks2019.bak
+│
+├── setup/                      # Environment prep & data mess injection
+│   ├── 01_restore.sql          # RESTORE DATABASE ... WITH MOVE ...
+│   ├── 02_inject_mess.sql      # Disables good indexes, adds bad ones, etc.
+│   └── 03_seed_heavy_load.sql  # Optional script to bulk‑insert rows
+│
+├── diagnostics/                # “Before” & “after” analysis scripts
+│   ├── 00_baseline_metrics.sql # Captures waits, IO, Query Store top queries
+│   ├── 01_missing_indexes.sql
+│   ├── 02_unused_indexes.sql
+│   ├── 03_fragmentation.sql
+│   └── 04_top_waits.sql
+│
+├── fixes/                      # Remediations & optimized code
+│   ├── 10_add_helpful_indexes.sql
+│   ├── 11_rewrite_bad_queries.sql
+│   ├── 12_update_statistics.sql
+│   └── 13_partition_sales_orders.sql
+│
+├── automation/                 # Proactive scripts & SQL Agent jobs
+│   ├── 20_index_maintenance.sql        # Ola Hallengren wrapper / custom job
+│   ├── 21_stats_drift_checker.sql
+│   ├── 22_slow_query_capture.sql       # Daily snapshot to a local table
+│   └── 23_alerts_setup.sql             # DB Mail + Agent alerts
+│
+├── reports/                    # Evidence of impact
+│   ├── baseline_vs_tuned.csv
+│   ├── logical_reads_comparison.xlsx
+│   └── perf_summary_powerbi.pbix
+│
+├── screenshots/                # PNG/JPEG artifacts for README or Playbook
+│   ├── plans/                  # Execution‑plan images or .sqlplan copies
+│   │   ├──  bad_salesorderdetail_plan.sqlplan
+│   │   └──  good_salesorderdetail_plan.sqlplan
+│   ├── dashboards/
+│   │   └── perf_dashboard_before.png
+│   │   └── perf_dashboard_after.png
+│   └── index_usage_chart.png
+│
+└── docs/                       # Extra diagrams or white‑papers
+    ├── architecture_diagram.drawio
+    └── client_handbook.pdf
